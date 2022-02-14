@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class CrawlerScript : MonoBehaviour
 {
-    public GameObject CrawlerFoot;
-    private GameObject Foot1;
+    public GameObject FootPrefab;
+    private GameObject Foot;
     // Start is called before the first frame update
     void Start()
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), out hit, Mathf.Infinity))
         {
-            Foot1 = Instantiate(CrawlerFoot, hit.point, Quaternion.identity);
+            Foot = Instantiate(FootPrefab, hit.point, Quaternion.identity);
         }
         else{
-            Foot1 = Instantiate(CrawlerFoot, transform.position, Quaternion.identity);
+            Foot = Instantiate(FootPrefab, transform.position, Quaternion.identity);
         }
         
     }
@@ -26,17 +26,17 @@ public class CrawlerScript : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), out hit, Mathf.Infinity))
         {
-            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            
 
             // if distance between foot and raycast downward bigger than value
-            float distance = (hit.point - Foot1.transform.position).magnitude;
+            float distance = (hit.point - Foot.transform.position).magnitude;
             if(distance > 2){
-                Destroy(Foot1); 
-                Foot1 = Instantiate(CrawlerFoot, hit.point, Quaternion.identity);
+                Destroy(Foot); 
+                Foot = Instantiate(FootPrefab, hit.point, Quaternion.identity);
             }
             
-            //Debug.Log("Did Hit");
             
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             
             /*
             Vector3 pointA ... //one of the points
