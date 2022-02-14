@@ -69,12 +69,6 @@ public class TestingScript : MonoBehaviour
 
 
 /*
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CrawlerScript : MonoBehaviour
-{
     public GameObject FootPrefab;
     public GameObject LegPrefab;
     private GameObject Foot;
@@ -130,6 +124,7 @@ public class CrawlerScript : MonoBehaviour
         Leg.transform.LookAt(transform.position);
     }
     // TODO: Feet need to rotate on surface they land on
-}
 
 */
+
+
