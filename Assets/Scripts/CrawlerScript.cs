@@ -7,15 +7,15 @@ public class CrawlerScript : MonoBehaviour
     public GameObject FootPrefab;
     private GameObject Foot;
     float threshold;
-    // Start is called before the first frame update
+
     void Start()
     {
         threshold = Random.Range(1.0f, 2.5f);
-        Debug.Log("Threshold: " + threshold);
+
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), out hit, Mathf.Infinity))
         {
-            Foot = Instantiate(FootPrefab, hit.point, Quaternion.identity);
+            Foot = Instantiate(FootPrefab, hit.point, Quaternion.LookRotation(hit.normal));
         }
         else{
             Foot = Instantiate(FootPrefab, transform.position, Quaternion.identity);
@@ -23,7 +23,6 @@ public class CrawlerScript : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         RaycastHit hit;
@@ -33,10 +32,10 @@ public class CrawlerScript : MonoBehaviour
             float distance = (hit.point - Foot.transform.position).magnitude;
             if(distance > threshold){
                 Destroy(Foot); 
-                Foot = Instantiate(FootPrefab, hit.point, Quaternion.identity);
+                Foot = Instantiate(FootPrefab, hit.point, Quaternion.LookRotation(hit.normal));
                 threshold = Random.Range(1.0f, 2.5f);
-                Debug.Log("Threshold: " + threshold);
             }
         }
     }
+    // TODO: Legs make me cry
 }

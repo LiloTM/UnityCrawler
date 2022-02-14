@@ -66,3 +66,70 @@ public class TestingScript : MonoBehaviour
         */        
     }
 }
+
+
+/*
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CrawlerScript : MonoBehaviour
+{
+    public GameObject FootPrefab;
+    public GameObject LegPrefab;
+    private GameObject Foot;
+    private GameObject Leg;
+    float threshold;
+
+    void Start()
+    {
+        threshold = Random.Range(1.0f, 2.5f);
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), out hit, Mathf.Infinity))
+        {
+            Foot = Instantiate(FootPrefab, hit.point, Quaternion.identity);
+            //Vector3 middlePoint = new Vector3 ((hit.point.x + transform.position.x)/2, (hit.point.y + transform.position.y)/2, (hit.point.z + transform.position.z)/2);
+            Leg = Instantiate(LegPrefab, hit.point, Quaternion.identity);
+
+            Vector3 newScale = Leg.transform.localScale;
+            newScale.z = Vector3.Distance(transform.position, hit.point)*2;
+            Leg.transform.localScale = newScale;
+
+            Leg.transform.LookAt(transform.position);
+        }
+        else{
+            Foot = Instantiate(FootPrefab, transform.position, Quaternion.identity);
+            Leg = Instantiate(LegPrefab, transform.position, Quaternion.identity);
+        }
+        
+    }
+
+    void Update()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.up), out hit, Mathf.Infinity))
+        {
+            // if distance between foot and raycast downward bigger than value
+            float distance = (hit.point - Foot.transform.position).magnitude;
+            if(distance > threshold){
+                Destroy(Foot); 
+                Foot = Instantiate(FootPrefab, hit.point, Quaternion.identity);
+                threshold = Random.Range(1.0f, 2.5f);
+
+                Destroy(Leg); 
+                //Vector3 middlePoint = new Vector3 ((hit.point.x + transform.position.x)/2, (hit.point.y + transform.position.y)/2, (hit.point.z + transform.position.z)/2);
+                Leg = Instantiate(LegPrefab, hit.point, Quaternion.identity);
+            }
+        }
+
+        Vector3 newScale = Leg.transform.localScale;
+        newScale.z = Vector3.Distance(transform.position, hit.point)*2;
+        Leg.transform.localScale = newScale;
+        
+        Leg.transform.LookAt(transform.position);
+    }
+    // TODO: Feet need to rotate on surface they land on
+}
+
+*/
