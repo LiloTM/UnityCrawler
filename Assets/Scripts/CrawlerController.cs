@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrawlerScript : MonoBehaviour
+public class CrawlerController : MonoBehaviour
 {
     public GameObject FootPrefab;
     public GameObject LegPrefab;
