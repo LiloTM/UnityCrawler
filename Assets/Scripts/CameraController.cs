@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Camera cam1;
-    public Camera cam2;
+    public Camera mainCam;
+    public Camera thirdPersonCam;
+    public Camera firstPersonCam;
 
     public float mouseSensitivity = 150f;
     public Transform playerBody;
@@ -13,21 +14,33 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        cam1.enabled = true;
-        cam2.enabled = false; 
+        mainCam.enabled = true;
+        thirdPersonCam.enabled = false; 
+        firstPersonCam.enabled = false; 
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C)) {
-            cam1.enabled = !cam1.enabled;
-            cam2.enabled = !cam2.enabled;
-            
+        if (Input.GetKeyDown(KeyCode.X)) {
+            mainCam.enabled = true;
+            thirdPersonCam.enabled = false; 
+            firstPersonCam.enabled = false; 
         }
-        if(cam1.enabled == true){
+        if (Input.GetKeyDown(KeyCode.C)) {
+            mainCam.enabled = false;
+            thirdPersonCam.enabled = true; 
+            firstPersonCam.enabled = false; 
+        }
+        if (Input.GetKeyDown(KeyCode.V)) {
+            mainCam.enabled = false;
+            thirdPersonCam.enabled = false; 
+            firstPersonCam.enabled = true; 
+        }
+
+        if(mainCam.enabled == true || thirdPersonCam.enabled == true){
             Cursor.lockState = CursorLockMode.None;
         }
-        if(cam2.enabled == true){
+        if(firstPersonCam.enabled == true){
             Cursor.lockState = CursorLockMode.Locked;
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
