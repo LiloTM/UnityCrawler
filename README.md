@@ -1,5 +1,5 @@
 # UnityCrawler
-#### Key Bindings ####
+### Key Bindings ###
 WASD + Mouse  -   Movement  
 Spacebar      -   Wall Jump  
 Esc           -   Return to Menu  
