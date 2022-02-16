@@ -38,4 +38,8 @@ public class MainMenu : MonoBehaviour
     public void Help() {
         helpUI.SetActive(true);
     }
+
+    public void ExitGame() {
+        Application.Quit();
+    }
 }
