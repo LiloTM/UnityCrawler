@@ -19,6 +19,5 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * Time.deltaTime * speed);
-        
     }
 }
