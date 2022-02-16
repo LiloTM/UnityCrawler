@@ -42,7 +42,6 @@ public class WallMovement : MonoBehaviour
         }
         
         ////// movement //////
-
         transform.Rotate(0, Input.GetAxis("Horizontal")*turnSpeed*Time.deltaTime, 0);
         
         if (Physics.Raycast(transform.position, -myNormal, out hit)) surfaceNormal = hit.normal; // update surface normal
